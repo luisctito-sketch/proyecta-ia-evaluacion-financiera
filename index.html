@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PROYECTA-IA: Evaluación Económica-Financiera para proyectos de factibilidad, prefactibilidad y servicios tecnológicos.">
+  <title>PROYECTA-IA | Capítulo V · Evaluación Económica-Financiera</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="access-locked">
+
+  <div id="accessGate" class="access-gate">
+    <div class="access-card">
+      <div class="access-logo">P</div>
+      <h2>Acceso a PROYECTA-IA</h2>
+      <p class="access-subtitle">Capítulo V · Evaluación Económica-Financiera</p>
+      <p>Ingresa tu número de Carnet de Identidad autorizado.</p>
+      <label for="ciAccess">Número de C.I.</label>
+      <input id="ciAccess" type="password" inputmode="numeric" autocomplete="off" placeholder="Solo números">
+      <button id="accessBtn" class="primary access-button" type="button">Ingresar</button>
+      <p id="accessMessage" class="access-message" aria-live="polite"></p>
+      <p class="access-privacy">El acceso se valida mediante la base central de PROYECTA-IA.</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div>
+          <h1>PROYECTA-IA</h1>
+          <p>Capítulo V · Evaluación Económica-Financiera</p>
+          <p class="author">Realizado por: Luis Cabezas Tito, Ph. D.</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="badge">FLUJO DE FONDOS · VAN · TIR · TRC · B/C · ROI</div>
+        <button id="logoutBtn" class="logout-btn hidden" type="button">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero finance-hero">
+      <span class="eyebrow">MÓDULO OPCIONAL DEL CAPÍTULO V</span>
+      <h2>EVALUACIÓN ECONÓMICA-FINANCIERA: <span>del flujo de fondos a la decisión de factibilidad</span></h2>
+      <p>
+        Este módulo se utiliza cuando el proyecto dispone de beneficios monetarios, ingresos, ahorros o flujos de caja
+        suficientemente sustentados. Es especialmente útil en proyectos de factibilidad y prefactibilidad técnico-económica,
+        incluidos servicios de telecomunicaciones, conectividad, telefonía móvil, Internet y otros servicios tecnológicos.
+      </p>
+
+      <div class="stop-box">
+        <strong>Regla metodológica:</strong> VAN, TIR, TRC, B/C, ROI y los demás indicadores deben ser consecuencia
+        de un <b>flujo de fondos sustentado</b>. No se deben inventar ingresos o ahorros para forzar artificialmente
+        la factibilidad del proyecto.
+      </div>
+
+      <div class="flow-step">
+        <article><b>1. Inversión</b><span>Año 0 y capital de trabajo.</span></article>
+        <article><b>2. Beneficios / ingresos</b><span>Servicios, ventas, ahorros o pérdidas evitadas.</span></article>
+        <article><b>3. Costos y gastos</b><span>O&amp;M, personal, energía, conectividad, etc.</span></article>
+        <article><b>4. Flujo de fondos</b><span>Impuestos, depreciación, residual y recuperación.</span></article>
+        <article><b>5. Indicadores</b><span>VAN, TIR, TRC, B/C, ROI, PI, VAE...</span></article>
+      </div>
+    </section>
+
+    <nav class="section-nav">
+      <a href="#conceptos">Conceptos</a>
+      <a href="#talab">Modelo TALAB ART</a>
+      <a href="#seleccion">Indicadores</a>
+      <a href="#parametros">Parámetros</a>
+      <a href="#telecom">Telecom</a>
+      <a href="#proyeccion">Proyección</a>
+      <a href="#flujo">Flujo</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#excel">Excel</a>
+      <a href="#sensibilidad">Sensibilidad</a>
+      <a href="#revisor">Revisor</a>
+    </nav>
+
+    <section id="conceptos" class="card">
+      <span class="section-number">1</span>
+      <h3>INDICADORES ECONÓMICO-FINANCIEROS: QUÉ SIGNIFICAN Y CÓMO SE CALCULAN</h3>
+
+      <div class="formula-box"><h4>VAN — Valor Actual Neto</h4>
+        <div class="formula">VAN = −I₀ + Σ[Fₜ / (1+i)ᵗ]</div>
+        <p>Incorpora el valor del dinero en el tiempo. Criterio general: <b>VAN &gt; 0</b> crea valor por encima de la TMAR; VAN = 0 remunera exactamente la tasa; VAN &lt; 0 no alcanza la rentabilidad mínima.</p>
+      </div>
+
+      <div class="formula-box"><h4>TIR — Tasa Interna de Retorno</h4>
+        <div class="formula">0 = −I₀ + Σ[Fₜ / (1+TIR)ᵗ]</div>
+        <p>Es la tasa que hace VAN = 0. Criterio general: <b>TIR &gt; TMAR</b>. Debe interpretarse con cautela si el flujo cambia varias veces de signo.</p>
+      </div>
+
+      <div class="formula-box"><h4>TIRM — Tasa Interna de Retorno Modificada</h4>
+        <div class="formula">TIRM = [VF(flujos positivos) / VP(flujos negativos)]^(1/n) − 1</div>
+        <p>Permite utilizar tasas realistas de financiamiento y reinversión.</p>
+      </div>
+
+      <div class="formula-box"><h4>TRC / PRI — Tiempo de Recuperación de Capital</h4>
+        <div class="formula">TRC = año anterior + saldo pendiente / flujo del año de recuperación</div>
+        <p>Mide cuánto tarda en recuperarse la inversión. El TRC simple no considera el valor del dinero en el tiempo.</p>
+      </div>
+
+      <div class="formula-box"><h4>TRC descontado</h4>
+        <div class="formula">Flujo descontadoₜ = Fₜ / (1+i)ᵗ</div>
+        <p>Aplica el payback sobre flujos actualizados; es más exigente que el TRC simple.</p>
+      </div>
+
+      <div class="formula-box"><h4>Relación Beneficio/Costo — B/C</h4>
+        <div class="formula">B/C = VP(Beneficios) / VP(Costos)</div>
+        <p>Criterio general: <b>B/C &gt; 1</b>. Expresa cuántas unidades monetarias de beneficio actualizado se obtienen por cada unidad monetaria de costo actualizado.</p>
+      </div>
+
+      <div class="formula-box"><h4>ROI — Retorno sobre la Inversión</h4>
+        <div class="formula">ROI = Beneficio neto acumulado / Inversión inicial × 100</div>
+        <p>No incorpora por sí mismo el valor temporal del dinero; úsalo como complemento.</p>
+      </div>
+
+      <div class="formula-box"><h4>PI — Índice de Rentabilidad</h4>
+        <div class="formula">PI = VP(flujos futuros netos) / Inversión inicial</div>
+        <p>PI &gt; 1 indica creación de valor.</p>
+      </div>
+
+      <div class="formula-box"><h4>VAE — Valor Anual Equivalente</h4>
+        <div class="formula">VAE = VAN × [i(1+i)ⁿ / ((1+i)ⁿ − 1)]</div>
+        <p>Convierte el VAN a una cantidad anual equivalente y ayuda a comparar alternativas con horizontes diferentes.</p>
+      </div>
+    </section>
+
+    <section id="talab" class="card">
+      <span class="section-number">2</span>
+      <h3>QUÉ SE TOMA DEL MODELO EXCEL TALAB ART</h3>
+      <p>El archivo proporcionado organiza el trabajo en tres bloques que PROYECTA-IA reproduce de forma flexible:</p>
+
+      <div class="talab-grid">
+        <article class="talab-card">
+          <h4>PARAMETROS</h4>
+          <ul>
+            <li>Demanda y capacidad anual.</li>
+            <li>Vida económica.</li>
+            <li>Financiamiento, interés y gracia.</li>
+            <li>Tasa de descuento.</li>
+            <li>Crecimiento de ingresos, costos y gastos.</li>
+            <li>Precio, inversiones, vida útil y valor residual.</li>
+            <li>Costos unitarios, gastos, inflación e impuestos.</li>
+          </ul>
+        </article>
+        <article class="talab-card">
+          <h4>INGRESOS-COSTOS</h4>
+          <ul>
+            <li>Proyección anual de ingresos.</li>
+            <li>Proyección de costos unitarios.</li>
+            <li>Proyección de gastos.</li>
+            <li>Inversiones y reinversiones.</li>
+            <li>Depreciación y valor residual.</li>
+          </ul>
+        </article>
+        <article class="talab-card">
+          <h4>FLUJO Y EVALUACIÓN</h4>
+          <ul>
+            <li>Ingresos − costos − gastos − depreciación.</li>
+            <li>Impuestos y utilidad neta.</li>
+            <li>Reintegro de depreciación.</li>
+            <li>Inversión y valor residual.</li>
+            <li>Flujo neto y flujo descontado.</li>
+            <li>VAN, TIR, B/C y decisión de factibilidad.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="info-box">
+        <strong>Importante:</strong> el Excel TALAB ART trabaja desde el punto de vista del proyecto. Si el estudiante
+        quiere evaluar además el flujo del inversionista/accionista incorporando deuda, intereses y amortizaciones,
+        deberá declarar ese enfoque expresamente para no mezclar ambos flujos.
+      </div>
+    </section>
+
+    <section id="seleccion" class="card">
+      <span class="section-number">3</span>
+      <h3>¿QUÉ INDICADORES QUIERES CALCULAR?</h3>
+      <p>No es obligatorio utilizar todos. Para la mayoría de estudios de factibilidad, VAN, TIR y TRC son suficientes; los demás pueden complementar.</p>
+      <div id="indicatorSelector" class="fin-indicators"></div>
+    </section>
+
+    <section id="parametros" class="card">
+      <span class="section-number">4</span>
+      <h3>DATOS QUE NECESITAS ANTES DE CONSTRUIR EL FLUJO</h3>
+
+      <label for="projectTitle">Título del proyecto</label>
+      <textarea id="projectTitle" rows="2" placeholder="Título aprobado"></textarea>
+
+      <label for="generalObjective">Objetivo General</label>
+      <textarea id="generalObjective" rows="4" placeholder="Objetivo General aprobado"></textarea>
+
+      <div class="param-group"><h4>Inversión y horizonte</h4>
+        <div class="params-grid">
+          <div><label for="initialInvestment">Inversión inicial I₀ (Bs)</label><input id="initialInvestment" inputmode="decimal" placeholder="0,00"></div>
+          <div><label for="workingCapital">Capital de trabajo incluido en I₀ (Bs)</label><input id="workingCapital" inputmode="decimal" value="0"></div>
+          <div><label for="lifeYears">Vida económica (años)</label><input id="lifeYears" type="number" min="1" max="30" value="5"></div>
+          <div><label for="discountRate">TMAR / tasa de descuento (%)</label><input id="discountRate" inputmode="decimal" value="12"></div>
+        </div>
+      </div>
+
+      <div class="param-group"><h4>Beneficios / ingresos y costos del primer año</h4>
+        <div class="params-grid">
+          <div><label for="benefitsYear1">Beneficios o ingresos año 1 (Bs)</label><input id="benefitsYear1" inputmode="decimal" placeholder="0,00"></div>
+          <div><label for="costsYear1">Costos y gastos O&amp;M año 1 (Bs)</label><input id="costsYear1" inputmode="decimal" placeholder="0,00"></div>
+          <div><label for="benefitGrowth">Crecimiento anual beneficios (%)</label><input id="benefitGrowth" inputmode="decimal" value="0"></div>
+          <div><label for="costGrowth">Crecimiento anual costos (%)</label><input id="costGrowth" inputmode="decimal" value="0"></div>
+        </div>
+      </div>
+
+      <div class="param-group"><h4>Impuestos, depreciación y recuperación final</h4>
+        <div class="params-grid">
+          <div><label for="taxRate">Tasa impositiva (%)</label><input id="taxRate" inputmode="decimal" value="0"></div>
+          <div><label for="depreciableBase">Base depreciable (Bs)</label><input id="depreciableBase" inputmode="decimal" value="0"></div>
+          <div><label for="residualValue">Valor residual al final (Bs)</label><input id="residualValue" inputmode="decimal" value="0"></div>
+          <div><label for="recoverWorkingCapital">Recuperar capital de trabajo al final</label><select id="recoverWorkingCapital"><option value="yes">Sí</option><option value="no">No</option></select></div>
+        </div>
+      </div>
+
+      <label for="assumptionSources">Fuentes y justificación de los parámetros</label>
+      <textarea id="assumptionSources" rows="5" placeholder="Cotizaciones, estudio de mercado, registros históricos, tarifas, vida útil, costo de oportunidad, costo de capital, TMAR institucional..."></textarea>
+
+      <button id="loadArteNaturaBtn" type="button">Cargar ejemplo didáctico ArteNatura</button>
+    </section>
+
+    <section id="telecom" class="card">
+      <span class="section-number">5</span>
+      <h3>ASISTENTE PARA PROYECTOS DE SERVICIOS DE TELECOMUNICACIONES</h3>
+      <p>En telecomunicaciones, los “productos” suelen expresarse como servicios, abonados, líneas, tráfico o capacidad contratada.</p>
+
+      <div class="service-helper">
+        <article><b>Demanda / abonados</b><span>Número de usuarios esperados, penetración, altas, bajas y crecimiento.</span></article>
+        <article><b>Tarifa / ARPU</b><span>Precio mensual por usuario o ingreso medio por usuario/servicio.</span></article>
+        <article><b>CAPEX</b><span>Radio bases, fibra, routers, switches, torres, energía, licencias, instalación.</span></article>
+        <article><b>OPEX</b><span>Arrendamiento, energía, backhaul, mantenimiento, personal, espectro, soporte.</span></article>
+        <article><b>Capacidad</b><span>Mbps/Gbps, canales, llamadas, tráfico o volumen realmente vendible.</span></article>
+        <article><b>Valor residual</b><span>Equipos recuperables y capital de trabajo al final del horizonte.</span></article>
+      </div>
+
+      <div class="four-col">
+        <div><label for="subscribers">Abonados/servicios año 1</label><input id="subscribers" inputmode="decimal" placeholder="0"></div>
+        <div><label for="monthlyTariff">Tarifa mensual (Bs)</label><input id="monthlyTariff" inputmode="decimal" placeholder="0,00"></div>
+        <div><label for="serviceMonths">Meses facturables/año</label><input id="serviceMonths" type="number" value="12" min="1" max="12"></div>
+        <div><label for="variableCostPerUser">Costo variable anual/usuario (Bs)</label><input id="variableCostPerUser" inputmode="decimal" value="0"></div>
+      </div>
+      <button id="useTelecomBtn" class="primary blue-btn" type="button">Calcular año 1 desde servicios</button>
+      <div id="telecomOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="proyeccion" class="card">
+      <span class="section-number">6</span>
+      <h3>MODELO DE PROYECCIÓN: NO ELIJAS UNA CURVA SOLO PORQUE “SE VE BONITA”</h3>
+
+      <div class="projection-grid">
+        <article class="projection-card"><h4>Crecimiento compuesto</h4><p>Para una tasa porcentual relativamente estable y un valor base.</p></article>
+        <article class="projection-card"><h4>Lineal</h4><p>Cuando los incrementos absolutos son aproximadamente constantes.</p></article>
+        <article class="projection-card"><h4>Exponencial</h4><p>Cuando los incrementos aumentan proporcionalmente al nivel alcanzado.</p></article>
+        <article class="projection-card"><h4>Promedio móvil</h4><p>Para suavizar fluctuaciones de corto plazo.</p></article>
+        <article class="projection-card"><h4>Regresión causal</h4><p>Cuando existe relación técnica/económica demostrable entre variables.</p></article>
+        <article class="projection-card"><h4>Escenarios</h4><p>Cuando hay incertidumbre importante y pocos datos históricos.</p></article>
+      </div>
+
+      <div class="two-col">
+        <div><label for="projectionModel">Modelo elegido</label>
+          <select id="projectionModel">
+            <option value="compound">Crecimiento compuesto / tasa de escalamiento</option>
+            <option value="linear">Lineal</option>
+            <option value="scenario">Escenarios / supuestos trazables</option>
+            <option value="manual">Valores manuales por año</option>
+          </select>
+        </div>
+        <div><label for="projectionJustification">Justificación</label><input id="projectionJustification" placeholder="Datos históricos, tendencia, contrato, capacidad, demanda..."></div>
+      </div>
+    </section>
+
+    <section id="flujo" class="card">
+      <span class="section-number">7</span>
+      <h3>CONSTRUYE EL FLUJO DE FONDOS ANTES DE CALCULAR INDICADORES</h3>
+      <button id="buildCashFlowBtn" class="primary blue-btn" type="button">Generar flujo de fondos</button>
+      <button id="copyCashFlowBtn" type="button">Copiar tabla como TSV</button>
+
+      <div id="cashFlowOutput" class="cashflow-wrap"></div>
+      <div id="cashFlowComment" class="comment-box hidden"></div>
+    </section>
+
+    <section id="resultados" class="card">
+      <span class="section-number">8</span>
+      <h3>INDICADORES Y DECISIÓN DE FACTIBILIDAD</h3>
+      <button id="calculateIndicatorsBtn" class="primary blue-btn" type="button">Calcular indicadores seleccionados</button>
+      <div id="indicatorsOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="excel" class="card">
+      <span class="section-number">9</span>
+      <h3>FÓRMULAS Y COMANDOS DE EXCEL</h3>
+      <p>Las funciones pueden variar según idioma y versión. Si el flujo inicial está en el año 0, VNA/NPV descuenta desde el periodo 1; por eso el flujo 0 se suma aparte.</p>
+
+      <div class="excel-table-wrap">
+        <table class="excel-table">
+          <thead><tr><th>Indicador</th><th>Excel español</th><th>Excel inglés</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td>VAN</td><td><span class="excel-code">=VNA(tasa;flujos_1_a_n)+flujo_0</span></td><td><span class="excel-code">=NPV(rate,flows_1_to_n)+flow_0</span></td><td><span class="excel-code">=VNA($B$2;C10:G10)+B10</span></td></tr>
+            <tr><td>TIR</td><td><span class="excel-code">=TIR(rango_flujos)</span></td><td><span class="excel-code">=IRR(cashflow_range)</span></td><td><span class="excel-code">=TIR(B10:G10)</span></td></tr>
+            <tr><td>TIRM</td><td><span class="excel-code">=TIRM(rango;tasa_fin;tasa_reinv)</span></td><td><span class="excel-code">=MIRR(range,finance_rate,reinvest_rate)</span></td><td><span class="excel-code">=TIRM(B10:G10;$B$2;$B$2)</span></td></tr>
+            <tr><td>VA de un flujo</td><td><span class="excel-code">=VA(tasa;nper;0;-vf)</span></td><td><span class="excel-code">=PV(rate,nper,0,-fv)</span></td><td><span class="excel-code">=VA($B$2;D$4;0;-D10)</span></td></tr>
+            <tr><td>ROI</td><td>No existe una función única</td><td>No single native function</td><td><span class="excel-code">=(SUMA(C10:G10)-ABS(B10))/ABS(B10)</span></td></tr>
+            <tr><td>B/C</td><td>No existe una función única</td><td>No single native function</td><td>Construir VP(Beneficios) / VP(Costos)</td></tr>
+            <tr><td>TRC</td><td>Flujo acumulado + interpolación</td><td>Cumulative cash flow + interpolation</td><td><span class="excel-code">=2+ABS(D15)/E10</span></td></tr>
+            <tr><td>Proyección lineal</td><td><span class="excel-code">=PRONOSTICO.LINEAL(x;y;x)</span></td><td><span class="excel-code">=FORECAST.LINEAR(x,known_y,known_x)</span></td><td>Según rango histórico</td></tr>
+            <tr><td>Tendencia</td><td><span class="excel-code">=TENDENCIA(y;x;nuevos_x)</span></td><td><span class="excel-code">=TREND(y,x,new_x)</span></td><td>Según rango histórico</td></tr>
+            <tr><td>Crecimiento exp.</td><td><span class="excel-code">=CRECIMIENTO(y;x;nuevos_x)</span></td><td><span class="excel-code">=GROWTH(y,x,new_x)</span></td><td>Según rango histórico</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-box">
+        <strong>Error frecuente:</strong> no dupliques la inversión inicial. Si utilizas <span class="excel-code">VNA</span>,
+        la inversión del año 0 se incorpora aparte. La <span class="excel-code">TIR</span>, en cambio, sí recibe todo el rango,
+        incluido el flujo negativo del año 0.
+      </div>
+    </section>
+
+    <section id="sensibilidad" class="card">
+      <span class="section-number">10</span>
+      <h3>ANÁLISIS DE SENSIBILIDAD</h3>
+      <p>Comprueba si la decisión se mantiene cuando cambian beneficios/ingresos, costos o la TMAR.</p>
+
+      <div class="sensitivity-grid">
+        <article class="scenario-card"><h4>Pesimista</h4>
+          <label>Beneficios (%)</label><input id="pessBenefits" inputmode="decimal" value="-15">
+          <label>Costos (%)</label><input id="pessCosts" inputmode="decimal" value="10">
+          <label>TMAR (puntos %)</label><input id="pessRate" inputmode="decimal" value="0">
+        </article>
+        <article class="scenario-card"><h4>Base</h4><p>Parámetros originales.</p></article>
+        <article class="scenario-card"><h4>Optimista</h4>
+          <label>Beneficios (%)</label><input id="optBenefits" inputmode="decimal" value="15">
+          <label>Costos (%)</label><input id="optCosts" inputmode="decimal" value="-5">
+          <label>TMAR (puntos %)</label><input id="optRate" inputmode="decimal" value="0">
+        </article>
+      </div>
+
+      <label for="sensitivitySource">Justificación de escenarios</label>
+      <textarea id="sensitivitySource" rows="4" placeholder="Estudio de mercado, variación histórica, contratos, tarifas, cotizaciones, demanda, juicio experto documentado..."></textarea>
+      <button id="sensitivityBtn" class="primary blue-btn" type="button">Calcular escenarios</button>
+      <div id="sensitivityOutput" class="output-box hidden"></div>
+    </section>
+
+    <section id="revisor" class="card">
+      <span class="section-number">11</span>
+      <h3>REVISOR INTEGRAL DE LA EVALUACIÓN ECONÓMICA-FINANCIERA</h3>
+      <label for="chapterText">Texto del estudiante</label>
+      <textarea id="chapterText" rows="18" placeholder="Pega aquí la sección de evaluación económica-financiera..."></textarea>
+      <button id="reviewBtn" class="primary blue-btn" type="button">Emitir dictamen</button>
+      <button id="copyPromptBtn" type="button">Copiar prompt para revisión profunda en ChatGPT</button>
+      <div id="reviewOutput" class="output-box hidden"></div>
+      <span id="promptStatus" class="small"></span>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>PROYECTA-IA</strong><p>Capítulo V · Evaluación Económica-Financiera</p></div>
+      <div class="footer-author">Luis Cabezas Tito, Ph. D.</div>
+    </div>
+  </footer>
+
+  <script src="https://luisctito-sketch.github.io/proyecta-ia-acceso/access.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
